@@ -1,0 +1,11 @@
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": "5432",
+  "username": "postgres",
+  "password": "password",
+  "database": "crud",
+  "synchronize": true,
+  "logging": true,
+  "entities": ["./scr/**/*entity.ts", "./dist/**/*entity.ts"]
+}
