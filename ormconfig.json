@@ -7,5 +7,5 @@
   "database": "crud",
   "synchronize": true,
   "logging": true,
-  "entities": ["./scr/**/*entity.ts", "./dist/**/*entity.ts"]
+  "entities": ["./scr/**/*.entity.ts", "./dist/**/*.entity.js"]
 }
