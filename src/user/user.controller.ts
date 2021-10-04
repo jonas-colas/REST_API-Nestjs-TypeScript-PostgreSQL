@@ -1,18 +1,27 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { ValidationPipe } from '../shared/validation.pipe';
 
-@Controller('user')
+
+@Controller()
 export class UserController {
-  constructor(private readonly userService: UserService) {}
+  constructor(private userService: UserService) {}
 
-  @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.userService.create(createUserDto);
+  @Post('api/register')
+  @UsePipes(new ValidationPipe())
+  register(@Body() createUserDto: CreateUserDto) {
+    return this.userService.register(createUserDto);
   }
 
-  @Get()
+  @Post('api/login')
+  @UsePipes(new ValidationPipe())
+  login(@Body() createUserDto: CreateUserDto) {
+    return this.userService.login(createUserDto);
+  }
+
+  @Get('api/users')
   findAll() {
     return this.userService.findAll();
   }
